@@ -26,11 +26,10 @@
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
-
 ## Running the app
+npm start
 
-$ npm start
-$ go To http://localhost:3000/api/listCommits
+go To http://localhost:3000/api/listCommits
 
 
 ## Stay in touch
