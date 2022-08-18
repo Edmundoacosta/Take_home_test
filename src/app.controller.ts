@@ -1,6 +1,5 @@
-import { Controller, Get, Param, Render, Req } from '@nestjs/common';
+import { Controller, Get, Param, Render, Req, Res } from '@nestjs/common';
 import { AppService } from './app.service';
-
 
 @Controller('/api')
 export class AppController {
@@ -9,6 +8,6 @@ export class AppController {
   @Get('/listCommits')
   @Render('index')
   root(){
-    return {message: 'Hello World!'};
+    return this.appService.findCommits().then((result) => result ? { data:result, message: 'Hello World'}: {data: {}, message: 'Example'});
   }
 }

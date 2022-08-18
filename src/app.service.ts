@@ -1,5 +1,5 @@
 import { HttpService } from '@nestjs/axios';
-import { Injectable } from '@nestjs/common';
+import { Injectable, Render } from '@nestjs/common';
 import { Observable } from 'rxjs';
 
 @Injectable()
@@ -11,10 +11,11 @@ export class AppService {
     return 'Hello World!';
   }
 
-  findCommits():any{
-    this.httpService.get('https://api.github.com/repos/Edmundoacosta/Take_home_test/commits').subscribe((res) => {
-      console.log(res);
-      return res;
+  async findCommits():Promise<any> {
+    await this.httpService.get('https://api.github.com/repos/Edmundoacosta/Take_home_test/commits').subscribe((res) => {
+      let allCommits = res.data.map((el) => el.commit);
+      console.log(allCommits);
+      return allCommits
     });
   }
 }
